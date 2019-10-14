@@ -1,5 +1,8 @@
 # Wahlzeit: Open Source Software for Photo Rating Sites
 
+This is the Fork! The original is at http://github.com/dirkriehle/wahlzeit.
+
+The custom theme is 3D-printing.
 
 ## PART I: INTRODUCTION
 
