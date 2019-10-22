@@ -75,6 +75,11 @@ public class Photo extends DataObject {
     protected String ownerId;
 
     /**
+     * [HW02]
+     */
+    public Location location = null;
+
+    /**
      * Each photo can be viewed in different sizes (XS, S, M, L, XL)
      * Images are pre-computed in these sizes to optimize bandwidth when requested.
      */
