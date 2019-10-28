@@ -74,6 +74,8 @@ public class EmailServiceTest {
 
     @Test
     public void testSendEmptySubject() {
+        // this is kind-off tested in invalidEmail, but should be a separate test to maximize test precision
+        // I don't want to modify foreign code, someone should exclude this case from the other one when fitting
         try {
             assertFalse("empty subject is allowed but should be forbidden",
                     emailService.sendEmailIgnoreException(validAddress, validAddress, null, "test"));
