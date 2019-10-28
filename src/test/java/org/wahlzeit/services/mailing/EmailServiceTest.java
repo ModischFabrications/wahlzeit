@@ -64,7 +64,9 @@ public class EmailServiceTest {
     public void testSendEmptyAddress() {
         try {
             assertFalse("empty addresses are allowed but should be forbidden",
-                    emailService.sendEmailIgnoreException(emptyAddress, emptyAddress, "hi", "test"));
+					emailService.sendEmailIgnoreException(validAddress, emptyAddress, "hi", "test"));
+			assertFalse("empty addresses are allowed but should be forbidden",
+					emailService.sendEmailIgnoreException(emptyAddress, validAddress, "hi", "test"));
         } catch (Exception ex) {
             Assert.fail("Silent mode does not allow exceptions");
         }
