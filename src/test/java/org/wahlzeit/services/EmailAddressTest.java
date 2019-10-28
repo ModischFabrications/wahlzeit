@@ -21,6 +21,7 @@
 package org.wahlzeit.services;
 
 import junit.framework.TestCase;
+import org.junit.Test;
 
 /**
  * Test cases for the EmailAddress class.
@@ -66,6 +67,7 @@ public class EmailAddressTest extends TestCase {
 		assertFalse(EmailAddress.EMPTY.isValid());
 	}
 
+	@Test
 	public void testEmailsEqual() {
 		EmailAddress address1 = EmailAddress.getFromString("test@example.com");
 		EmailAddress address2 = EmailAddress.getFromString("test@example.com");
