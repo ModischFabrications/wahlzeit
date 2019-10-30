@@ -59,7 +59,7 @@ dependencies {
 }
 
 test {
-    // FIXME: not working, way too many tests and collisions
+    // FIXME: not working, duplication
     "org.wahlzeit.suites.AllTests"
     testLogging {
             events "passed", "skipped", "failed"
