@@ -59,9 +59,8 @@ dependencies {
 }
 
 test {
-    filter {
-        includeTestsMatching "org.wahlzeit.*"
-    }
+    // FIXME: not working, way too many tests and collisions
+    "org.wahlzeit.suites.AllTests"
     testLogging {
             events "passed", "skipped", "failed"
 
