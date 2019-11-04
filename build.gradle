@@ -60,7 +60,7 @@ test {
     filter {
         // this is a *very* specific string,
         // don't try to optimise it!
-        include "**/AllTests*.class"
+        includeTestsMatching "org.wahlzeit.AllTests"
     }
 
     testLogging {
