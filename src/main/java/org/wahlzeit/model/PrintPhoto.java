@@ -12,6 +12,21 @@ public class PrintPhoto extends Photo {
 
     private Material printMaterial = Material.UNKNOWN;
 
+    /**
+     *
+     */
+    public PrintPhoto(Material printMaterial) {
+        super();
+        this.printMaterial = printMaterial;
+    }
+
+    /**
+     * @methodtype constructor
+     */
+    public PrintPhoto(PhotoId myId, Material printMaterial) {
+        super(myId);
+        this.printMaterial = printMaterial;
+    }
 
     /**
      * @methodtype get
