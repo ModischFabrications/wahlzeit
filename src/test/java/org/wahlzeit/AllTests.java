@@ -16,6 +16,7 @@ import org.wahlzeit.utils.VersionTest;
 // currently 86 tests, all successful
 @Suite.SuiteClasses({
         EmailTestSuite.class,
+        PrintPhotoTestSuite.class,
 
         // TODO: move these individual tests into sub-suites
         // Abstract* and *Provider are excluded, just like in the previous version
