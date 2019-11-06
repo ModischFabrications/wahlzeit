@@ -8,23 +8,33 @@ public class PrintPhotoManager extends PhotoManager {
 
     protected static final PrintPhotoManager instance = new PrintPhotoManager();
 
-    // TODO: is that necessary?
-    private PrintPhotoManager() {
-        super();
-    }
-
     public static PrintPhotoManager getInstance() {
         return instance;
     }
 
     @Override
     public PrintPhoto getPhoto(PhotoId id) {
-        return (PrintPhoto) super.getPhoto(id);
+        return instance.getPhotoFromId(id);
     }
 
     @Override
     public PrintPhoto getPhotoFromId(PhotoId id) {
-        return (PrintPhoto) super.getPhotoFromId(id);
+        // reimplemented to point to the correct instance of the manager
+
+        if (id == null) {
+            return null;
+        }
+
+        PrintPhoto result = (PrintPhoto) doGetPhotoFromId(id);
+
+        if (result == null) {
+            result = PrintPhotoFactory.getInstance().loadPhoto(id);
+            if (result != null) {
+                doAddPhoto(result);
+            }
+        }
+
+        return result;
     }
 
     public void savePhoto(PrintPhoto photo) {

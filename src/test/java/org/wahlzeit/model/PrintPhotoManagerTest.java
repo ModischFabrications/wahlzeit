@@ -35,11 +35,16 @@ public class PrintPhotoManagerTest {
     }
 
     @Test
+    public void testSingletonConstructor() {
+        PrintPhotoManager same_manager = PrintPhotoManager.getInstance();
+
+        assertEquals(manager, same_manager);
+    }
+
+    @Test
     public void testAddPhoto() throws IOException {
         PrintPhoto photo = new PrintPhoto(PrintPhoto.Material.PETG);
-        PrintPhotoManager.getInstance().addPhoto(photo);
-
-        assertEquals(photo, PrintPhotoManager.getInstance().getPhoto(photo.getId()));
+        manager.addPhoto(photo);
     }
 
     @Test
@@ -48,5 +53,6 @@ public class PrintPhotoManagerTest {
         manager.addPhoto(photo);
 
         assertTrue(manager.hasPhoto(photo.getId()));
+        assertEquals(photo, PrintPhotoManager.getInstance().getPhoto(photo.getId()));
     }
 }
