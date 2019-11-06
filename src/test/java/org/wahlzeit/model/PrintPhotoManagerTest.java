@@ -44,15 +44,26 @@ public class PrintPhotoManagerTest {
     @Test
     public void testAddPhoto() throws IOException {
         PrintPhoto photo = new PrintPhoto(PrintPhoto.Material.PETG);
+
         manager.addPhoto(photo);
     }
 
     @Test
-    public void testGetHasPhoto() throws IOException {
+    public void testHasPhoto() throws IOException {
         PrintPhoto photo = new PrintPhoto(PrintPhoto.Material.PETG);
+
         manager.addPhoto(photo);
 
         assertTrue(manager.hasPhoto(photo.getId()));
-        assertEquals(photo, PrintPhotoManager.getInstance().getPhoto(photo.getId()));
     }
+
+    @Test
+    public void testEqualPhoto() throws IOException {
+        PrintPhoto photo = new PrintPhoto(PrintPhoto.Material.PETG);
+
+        manager.addPhoto(photo);
+
+        assertEquals(photo, manager.getPhoto(photo.getId()));
+    }
+
 }
