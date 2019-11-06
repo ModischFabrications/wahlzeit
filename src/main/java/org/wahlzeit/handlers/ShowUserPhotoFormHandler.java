@@ -49,7 +49,7 @@ public class ShowUserPhotoFormHandler extends AbstractWebFormHandler {
      */
     protected void doMakeWebPart(UserSession us, WebPart part) {
         PhotoId photoId = us.getPhotoId();
-        Photo photo = PhotoManager.getInstance().getPhoto(photoId);
+        Photo photo = PrintPhotoManager.getInstance().getPhoto(photoId);
         String id = photo.getId().asString();
         ModelConfig config = us.getClient().getLanguageConfiguration();
         part.addString(Photo.ID, id);
@@ -73,7 +73,7 @@ public class ShowUserPhotoFormHandler extends AbstractWebFormHandler {
      */
     protected boolean isWellFormedPost(UserSession us, Map args) {
         String id = us.getAsString(args, Photo.ID);
-        Photo photo = PhotoManager.getInstance().getPhoto(id);
+        Photo photo = PrintPhotoManager.getInstance().getPhoto(id);
         return (photo != null) && us.isPhotoOwner(photo);
     }
 
@@ -84,7 +84,7 @@ public class ShowUserPhotoFormHandler extends AbstractWebFormHandler {
         String result = PartUtil.SHOW_USER_HOME_PAGE_NAME;
 
         String id = us.getAndSaveAsString(args, Photo.ID);
-        Photo photo = PhotoManager.getInstance().getPhoto(id);
+        Photo photo = PrintPhotoManager.getInstance().getPhoto(id);
 
         UserManager userManager = UserManager.getInstance();
         User user = userManager.getUserById(photo.getOwnerId());
@@ -103,7 +103,7 @@ public class ShowUserPhotoFormHandler extends AbstractWebFormHandler {
                     addParameter("Photo", id).toString());
         } else if (us.isFormType(args, "delete")) {
             photo.setStatus(photo.getStatus().asDeleted(true));
-            PhotoManager.getInstance().savePhoto(photo);
+            PrintPhotoManager.getInstance().savePhoto(photo);
             if (user.getUserPhoto() == photo) {
                 user.setUserPhoto(null);
                 userManager.saveClient(user);

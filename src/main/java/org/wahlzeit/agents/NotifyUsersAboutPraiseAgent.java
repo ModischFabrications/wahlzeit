@@ -32,7 +32,7 @@ public class NotifyUsersAboutPraiseAgent extends Agent {
      * Notifies all users that want to get informed if their photos have been praised.
      */
     protected void doRun() {
-        Map<PhotoId, Photo> photoCache = PhotoManager.getInstance().getPhotoCache();
+        Map<PhotoId, Photo> photoCache = PrintPhotoManager.getInstance().getPhotoCache();
         Collection<Photo> photos = photoCache.values();
 
         ArrayList<Photo> arrayListOfPhotos;
@@ -52,7 +52,7 @@ public class NotifyUsersAboutPraiseAgent extends Agent {
                     arrayListOfPhotos.add(photo);
                     ownerIdPhotosMap.put(ownerId, arrayListOfPhotos);
                     photo.setNoNewPraise();
-                    PhotoManager.getInstance().savePhoto(photo);
+                    PrintPhotoManager.getInstance().savePhoto(photo);
                 }
             }
         }

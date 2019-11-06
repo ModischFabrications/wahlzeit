@@ -59,7 +59,7 @@ public class PraisePhotoFormHandler extends AbstractWebFormHandler {
      */
     protected boolean isWellFormedPost(UserSession us, Map args) {
         String photoId = us.getAsString(args, Photo.ID);
-        Photo photo = PhotoManager.getInstance().getPhoto(photoId);
+        Photo photo = PrintPhotoManager.getInstance().getPhoto(photoId);
         return photo != null;
     }
 
@@ -68,7 +68,7 @@ public class PraisePhotoFormHandler extends AbstractWebFormHandler {
      */
     protected String doHandlePost(UserSession us, Map args) {
         String photoId = us.getAsString(args, Photo.ID);
-        Photo photo = PhotoManager.getInstance().getPhoto(photoId);
+        Photo photo = PrintPhotoManager.getInstance().getPhoto(photoId);
         String praise = us.getAsString(args, Photo.PRAISE);
         Client client = us.getClient();
 
