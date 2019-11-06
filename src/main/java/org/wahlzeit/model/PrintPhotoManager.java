@@ -9,7 +9,7 @@ public class PrintPhotoManager extends PhotoManager {
     protected static final PrintPhotoManager instance = new PrintPhotoManager();
 
     // TODO: is that necessary?
-    public PrintPhotoManager() {
+    private PrintPhotoManager() {
         super();
     }
 

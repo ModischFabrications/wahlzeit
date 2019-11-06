@@ -1,6 +1,12 @@
 package org.wahlzeit.model;
 
+import org.wahlzeit.services.LogBuilder;
+
+import java.util.logging.Logger;
+
 public class PrintPhotoFactory extends PhotoFactory {
+    private static final Logger log = Logger.getLogger(PrintPhotoFactory.class.getName());
+
     /**
      * Hidden singleton instance; needs to be initialized from the outside.
      */
@@ -11,11 +17,14 @@ public class PrintPhotoFactory extends PhotoFactory {
      */
     public static synchronized PrintPhotoFactory getInstance() {
         if (instance == null) {
+            log.config(LogBuilder.createSystemMessage().addAction("setting PrintPhotoFactory").toString());
             setInstance(new PhotoFactory());
         }
 
         return instance;
     }
+
+    // TODO: setInstance?
 
     /**
      * @methodtype factory
@@ -47,4 +56,5 @@ public class PrintPhotoFactory extends PhotoFactory {
         return null;
     }
 
+    // TODO: PhotoFilter?
 }
