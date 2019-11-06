@@ -1,17 +1,27 @@
 package org.wahlzeit.model;
 
+import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
 import org.junit.rules.TestRule;
-import org.wahlzeit.testEnvironmentProvider.LocalDatastoreServiceTestConfigProvider;
-import org.wahlzeit.testEnvironmentProvider.RegisteredOfyEnvironmentProvider;
-import org.wahlzeit.testEnvironmentProvider.UserSessionProvider;
+import org.wahlzeit.testEnvironmentProvider.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 public class PrintPhotoTest {
+
+    @ClassRule
+    public static SysConfigProvider sysConfigProvider = new SysConfigProvider();
+    @ClassRule
+    public static WebFormHandlerProvider webFormHandlerProvider = new WebFormHandlerProvider();
+
+    @Rule
+    public TestRule chain = RuleChain.
+            outerRule(new LocalDatastoreServiceTestConfigProvider()).
+            around(new RegisteredOfyEnvironmentProvider()).
+            around(new UserSessionProvider());
 
     @Test()
     public void testConstructor() {
