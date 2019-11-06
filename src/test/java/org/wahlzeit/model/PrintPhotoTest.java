@@ -29,12 +29,6 @@ public class PrintPhotoTest {
         assertEquals(PrintPhoto.Material.PETG, photo.getPrintMaterial());
     }
 
-/*    @Test(expected = ExceptionInInitializerError.class)
-    public void testInvalidConstructor() {
-        PrintPhoto photo = new PrintPhoto(PrintPhoto.Material.PETG);
-        fail("Construction was successful but should throw an error");
-    }*/
-
     @Test
     public void testNotEqualMaterial() {
         PrintPhoto photo = new PrintPhoto(PrintPhoto.Material.PETG);

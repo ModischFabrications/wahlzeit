@@ -10,6 +10,7 @@ import org.wahlzeit.testEnvironmentProvider.*;
 
 import java.io.IOException;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class PrintPhotoManagerTest {
@@ -31,7 +32,6 @@ public class PrintPhotoManagerTest {
     public void setUp() {
         manager = PrintPhotoManager.getInstance();
         manager.init();
-
     }
 
     @Test
@@ -48,20 +48,17 @@ public class PrintPhotoManagerTest {
 
     @Test
     public void testAddPhoto() throws IOException {
-        manager.addPhoto(new PrintPhoto(PrintPhoto.Material.PETG));
+        PrintPhoto photo = new PrintPhoto(PrintPhoto.Material.PETG);
+        PrintPhotoManager.getInstance().addPhoto(photo);
 
+        assertEquals(photo, PrintPhotoManager.getInstance().getPhoto(photo.getId()));
     }
 
     @Test
     public void testGetHasPhoto() throws IOException {
-        manager.addPhoto(new PrintPhoto(PrintPhoto.Material.PETG));
+        PrintPhoto photo = new PrintPhoto(PrintPhoto.Material.PETG);
+        manager.addPhoto(photo);
 
-        PrintPhoto photo = manager.getPhoto(PhotoId.getRandomId());
-
-        assertTrue(manager.hasPhoto(photo.id));
-    }
-
-    @Test
-    public void getVisiblePhoto() {
+        assertTrue(manager.hasPhoto(photo.getId()));
     }
 }
