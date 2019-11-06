@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class PrintPhotoManagerTest {
-
+    // Fixes for Photo-Importing with AppEngine
     @ClassRule
     public static SysConfigProvider sysConfigProvider = new SysConfigProvider();
     @ClassRule
@@ -32,18 +32,6 @@ public class PrintPhotoManagerTest {
     public void setUp() {
         manager = PrintPhotoManager.getInstance();
         manager.init();
-    }
-
-    @Test
-    public void getPhotoFromId() {
-    }
-
-    @Test
-    public void savePhoto() {
-    }
-
-    @Test
-    public void createPhoto() {
     }
 
     @Test
