@@ -21,9 +21,9 @@ public class SphericCoordinateTest {
 
     @Test
     public void testIsEqual() {
-        SphericCoordinate coordinate1 = new SphericCoordinate(1, 2, 3);
-        SphericCoordinate coordinate2 = new SphericCoordinate(1, 2, 5);
+        Coordinate coordinate1 = new SphericCoordinate(1, 2, 3);
+        Coordinate coordinate2 = new SphericCoordinate(1, 2, 3);
 
-        assertEquals(2, coordinate1.getCentralAngle(coordinate2), 0.001);
+        assertEquals(coordinate1, coordinate2);
     }
 }
