@@ -24,6 +24,6 @@ public class SphericCoordinateTest {
         SphericCoordinate coordinate1 = new SphericCoordinate(1, 2, 3);
         SphericCoordinate coordinate2 = new SphericCoordinate(1, 2, 5);
 
-        assertEquals(2, coordinate1.getCentralAngle(coordinate2), 0.01);
+        assertEquals(2, coordinate1.getCentralAngle(coordinate2), 0.001);
     }
 }

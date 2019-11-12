@@ -8,6 +8,8 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
         LocationTest.class,
         CartesianCoordinateTest.class,
+        SphericCoordinateTest.class,
+        CoordinateTest.class
 })
 
 public class LocationTestSuite {
