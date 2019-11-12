@@ -62,13 +62,16 @@ public class CartesianCoordinate implements Coordinate {
     }
 
     /**
-     * more of a "isSimilar" due to floating error compensation
+     * more of a "isSimilar" due to floating point error compensation
      */
     @Override
     public boolean isEqual(Coordinate other) {
         return this.isSimilar(other.asCartesianCoordinate());
     }
 
+    /**
+     * with floating point error compensation
+     */
     private boolean isSimilar(CartesianCoordinate other) {
         return (similar(this.x, other.getX())) && (similar(this.y, other.getY())) && (similar(this.z, other.getZ()));
     }

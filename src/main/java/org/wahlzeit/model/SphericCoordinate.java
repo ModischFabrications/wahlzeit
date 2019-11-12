@@ -62,4 +62,16 @@ public class SphericCoordinate implements Coordinate {
     public int hashCode() {
         return Objects.hash(phi, theta, radius);
     }
+
+    public double getPhi() {
+        return phi;
+    }
+
+    public double getTheta() {
+        return theta;
+    }
+
+    public double getRadius() {
+        return radius;
+    }
 }

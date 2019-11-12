@@ -4,6 +4,7 @@ public interface Coordinate {
     CartesianCoordinate asCartesianCoordinate();
     double getCartesianDistance(Coordinate other);
 
+    // https://en.wikipedia.org/wiki/Great-circle_distance
     SphericCoordinate asSphericCoordinate();
     double getCentralAngle(Coordinate other);
 
