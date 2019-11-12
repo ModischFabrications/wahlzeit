@@ -13,10 +13,10 @@ public class CartesianCoordinateTest {
 
     @Test
     public void testGetDistance() {
-        CartesianCoordinate coordinate = new CartesianCoordinate(1, 2, 3);
+        CartesianCoordinate coordinate1 = new CartesianCoordinate(1, 2, 3);
         CartesianCoordinate coordinate2 = new CartesianCoordinate(3, 2, 3);
 
-        assertEquals(2, coordinate.getDistance(coordinate2), 0.01);
+        assertEquals(2, coordinate1.getDistance(coordinate2), 0.01);
     }
 
     @Test
