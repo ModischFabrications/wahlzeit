@@ -29,7 +29,7 @@ public class CoordinateTest {
         Coordinate coordinate1 = new CartesianCoordinate(1, 2, 3);
         Coordinate coordinate2 = new CartesianCoordinate(1, 2, 5);
 
-        assertEquals(2, coordinate1.getCentralAngle(coordinate2), 0.001);
+        assertEquals(0.09822, coordinate1.getCentralAngle(coordinate2), 0.001);
     }
 
 }
