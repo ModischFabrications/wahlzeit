@@ -7,6 +7,9 @@ public class SphericCoordinate implements Coordinate {
     private final double theta;
     private final double radius;
 
+    /**
+     * everything in radians!
+     */
     public SphericCoordinate(double phi, double theta, double radius) {
         this.phi = phi;
         this.theta = theta;
@@ -15,8 +18,15 @@ public class SphericCoordinate implements Coordinate {
 
     @Override
     public CartesianCoordinate asCartesianCoordinate() {
-        // FIXME: conversion
-        return null;
+        // seems to be this conversion. Be aware that it has a different notation!
+        // p -> radius
+        // https://en.wikipedia.org/wiki/List_of_common_coordinate_transformation
+
+        double x = radius * Math.sin(theta) * Math.cos(phi);
+        double y = radius * Math.sin(theta) * Math.sin(phi);
+        double z = radius * Math.cos(theta);
+
+        return new CartesianCoordinate(x, y, z);
     }
 
     /**
@@ -35,6 +45,9 @@ public class SphericCoordinate implements Coordinate {
     @Override
     public double getCentralAngle(Coordinate other) {
         // FIXME: calculation
+
+        // https://en.wikipedia.org/wiki/Great-circle_distance
+
         return 99;
     }
 

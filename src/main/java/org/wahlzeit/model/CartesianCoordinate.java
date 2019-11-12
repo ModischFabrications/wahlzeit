@@ -49,8 +49,13 @@ public class CartesianCoordinate implements Coordinate {
 
     @Override
     public SphericCoordinate asSphericCoordinate() {
-        // FIXME: conversion
-        return null;
+        // https://en.wikipedia.org/wiki/Spherical_coordinate_system
+        double r = Math.sqrt(x * x + y * y + z * z);
+        double phi = Math.atan(y / x);
+        // Math.atan2(y/x); ?
+        double theta = Math.acos(z / r);
+
+        return new SphericCoordinate(phi, theta, r);
     }
 
     /**
