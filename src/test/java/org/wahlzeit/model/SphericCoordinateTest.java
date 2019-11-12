@@ -12,11 +12,20 @@ public class SphericCoordinateTest {
     }
 
     @Test
-    public void testGetAngle() {
+    public void testGetEqualAngleRadius() {
         SphericCoordinate coordinate1 = new SphericCoordinate(1, 2, 3);
         SphericCoordinate coordinate2 = new SphericCoordinate(1, 2, 5);
 
-        assertEquals(2, coordinate1.getCentralAngle(coordinate2), 0.01);
+        assertEquals(0, coordinate1.getCentralAngle(coordinate2), 0.01);
+    }
+
+    @Test
+    public void testGetAngle() {
+        SphericCoordinate coordinate1 = new SphericCoordinate(1, 2, 3);
+        SphericCoordinate coordinate2 = new SphericCoordinate(1, 3, 3);
+
+        // I hope that's expected, can't really check it against something else...
+        assertEquals(0.524, coordinate1.getCentralAngle(coordinate2), 0.001);
     }
 
     @Test

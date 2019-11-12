@@ -42,13 +42,32 @@ public class SphericCoordinate implements Coordinate {
         return this;
     }
 
+    /**
+     * uses haversine formula, has some rounding errors
+     */
     @Override
     public double getCentralAngle(Coordinate other) {
-        // FIXME: calculation
+        SphericCoordinate sOther = other.asSphericCoordinate();
 
+        double angle = doGetAngle(sOther);
+
+        assert !Double.isNaN(angle);
+        return angle;
+    }
+
+    private double doGetAngle(SphericCoordinate sOther) {
         // https://en.wikipedia.org/wiki/Great-circle_distance
+        // notation: theta -> lambda
+        // It sounds crazy but the radius does not matter!
+        double dPhi = sOther.getPhi() - this.getPhi();
+        double dTheta = sOther.getTheta() - this.getTheta();
 
-        return 99;
+        double subformula = Math.pow(Math.sin(dPhi / 2), 2) +
+                Math.cos(this.getPhi()) * Math.cos(sOther.getPhi()) *
+                        Math.pow(Math.sin(dTheta / 2), 2);
+        double angle = 2 * Math.asin(Math.sqrt(subformula));
+
+        return angle;
     }
 
     /**
