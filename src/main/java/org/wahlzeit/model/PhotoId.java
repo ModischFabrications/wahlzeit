@@ -101,7 +101,6 @@ public class PhotoId implements Serializable {
             return NULL_ID;
         }
 
-        // @FIXME http://en.wikipedia.org/wiki/Double-checked_locking
         PhotoId result = ids[id];
         if (result == null) {
             synchronized (ids) {
@@ -159,7 +158,6 @@ public class PhotoId implements Serializable {
      *
      */
     public boolean equals(Object o) {
-        // @FIXME
 
         if (!(o instanceof PhotoId)) {
             return false;

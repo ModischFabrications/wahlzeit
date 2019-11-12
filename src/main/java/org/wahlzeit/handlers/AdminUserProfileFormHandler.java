@@ -93,7 +93,6 @@ public class AdminUserProfileFormHandler extends AbstractWebFormHandler {
         user.setAccessRights(AccessRights.getFromString(rights));
         user.setGender(Gender.getFromString(gender));
         user.setLanguage(Language.getFromString(language));
-        // TODO user.setEmailAddress(EmailAddress.getFromString(emailAddress));
         user.setNotifyAboutPraise((notifyAboutPraise != null) && notifyAboutPraise.equals("on"));
 
         um.removeClient(user);

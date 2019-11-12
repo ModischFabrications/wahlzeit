@@ -69,12 +69,6 @@ public class LoginFormHandler extends AbstractWebFormHandler {
                 log.info(LogBuilder.createUserMessage().addAction("Signup").toString());
             }
 
-//              TODO
-//            if (user.getStatus().isDisabled()) {
-//                us.setMessage(us.getConfiguration().getUserIsDisabled());
-//                return PartUtil.LOGIN_PAGE_NAME;
-//            }
-
             return PartUtil.SHOW_USER_HOME_PAGE_NAME;
         } else {
             // googleUser not logged in

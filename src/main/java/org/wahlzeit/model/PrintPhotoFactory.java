@@ -73,5 +73,4 @@ public class PrintPhotoFactory extends PhotoFactory {
         return null;
     }
 
-    // TODO: PhotoFilter?
 }

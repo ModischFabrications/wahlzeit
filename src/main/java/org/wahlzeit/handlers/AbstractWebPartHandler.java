@@ -225,7 +225,7 @@ public abstract class AbstractWebPartHandler implements WebPartHandler {
     }
 
     /**
-     * @param args TODO
+     *
      */
     protected String doHandleGet(UserSession us, String link, Map args) {
         return link;

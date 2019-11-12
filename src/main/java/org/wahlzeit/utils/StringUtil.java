@@ -147,7 +147,6 @@ public class StringUtil {
      *
      * @param path
      * @return
-     * @fixme Review for performance
      */
     public final static String pathAsUrlString(String path) {
         if (!File.separator.equals(URL_SEPARATOR)) {

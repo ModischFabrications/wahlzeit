@@ -92,7 +92,6 @@ public class PhotoCaseManager extends ObjectManager {
         if (myCase.isDirty()) {
             writeObject(myCase);
         }
-        // @FIXME Main.saveGlobals();
     }
 
     /**

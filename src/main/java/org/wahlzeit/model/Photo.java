@@ -130,7 +130,6 @@ public class Photo extends DataObject {
     /**
      *
      */
-    //TODO: change it to a single long
     @Id
     Long idLong;
     @Parent
