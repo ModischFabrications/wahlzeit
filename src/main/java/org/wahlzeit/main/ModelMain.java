@@ -106,7 +106,6 @@ public abstract class ModelMain extends AbstractMain {
         log.info("Found " + photoFiles.length + " photo(s) in resource folder.");
 
         for (File photo : photoFiles) {
-            //TODO: change to datastore/cloud storage
             try {
                 Image image = getImageFromFile(photo);
                 Photo newPhoto = photoManager.createPhoto(photo.getName(), image);
