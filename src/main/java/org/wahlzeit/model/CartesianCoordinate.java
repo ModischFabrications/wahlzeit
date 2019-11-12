@@ -34,7 +34,7 @@ public class CartesianCoordinate implements Coordinate {
 
         CartesianCoordinate other = (CartesianCoordinate) obj;
 
-        return this.isEqual(other);
+        return this.isSimilar(other);
     }
 
     @Override
@@ -49,23 +49,28 @@ public class CartesianCoordinate implements Coordinate {
 
     @Override
     public SphericCoordinate asSphericCoordinate() {
-        // FIXME
+        // FIXME: conversion
         return null;
     }
 
+    /**
+     * uses impl of spheric, see that one for explanations
+     */
     @Override
     public double getCentralAngle(Coordinate other) {
-        // FIXME
-        return 0;
+        return this.asCartesianCoordinate().getCentralAngle(other);
     }
 
+    /**
+     * more of a "isSimilar" due to floating error compensation
+     */
     @Override
     public boolean isEqual(Coordinate other) {
-        return this.isEqual(other.asCartesianCoordinate());
+        return this.isSimilar(other.asCartesianCoordinate());
     }
 
-    private boolean isEqual(CartesianCoordinate other) {
-        return (equal(this.x, other.getX())) && (equal(this.y, other.getY())) && (equal(this.z, other.getZ()));
+    private boolean isSimilar(CartesianCoordinate other) {
+        return (similar(this.x, other.getX())) && (similar(this.y, other.getY())) && (similar(this.z, other.getZ()));
     }
 
     public double getX() {
@@ -85,7 +90,7 @@ public class CartesianCoordinate implements Coordinate {
         return Objects.hash(x, y, z);
     }
 
-    private boolean equal(double d1, double d2) {
+    private boolean similar(double d1, double d2) {
         double d = d1 / d2;
         return (Math.abs(d - 1.0) < 0.001);
     }
