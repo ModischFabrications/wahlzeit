@@ -1,7 +1,7 @@
 package org.wahlzeit.agents;
 
 import org.wahlzeit.model.Photo;
-import org.wahlzeit.model.PrintPhotoManager;
+import org.wahlzeit.model.printphoto.PrintPhotoManager;
 import org.wahlzeit.services.LogBuilder;
 
 import javax.servlet.ServletException;

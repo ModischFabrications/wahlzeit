@@ -1,4 +1,7 @@
-package org.wahlzeit.model;
+package org.wahlzeit.model.printphoto;
+
+import org.wahlzeit.model.Photo;
+import org.wahlzeit.model.PhotoId;
 
 public class PrintPhoto extends Photo {
     // TODO: should be added to the UI

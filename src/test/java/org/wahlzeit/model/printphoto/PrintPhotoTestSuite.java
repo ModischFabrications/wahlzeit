@@ -1,4 +1,4 @@
-package org.wahlzeit.model;
+package org.wahlzeit.model.printphoto;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

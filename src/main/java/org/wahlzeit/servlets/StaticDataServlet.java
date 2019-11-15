@@ -4,8 +4,8 @@ import com.google.appengine.api.images.Image;
 import org.apache.http.HttpStatus;
 import org.wahlzeit.model.Photo;
 import org.wahlzeit.model.PhotoSize;
-import org.wahlzeit.model.PrintPhotoManager;
 import org.wahlzeit.model.persistence.ImageStorage;
+import org.wahlzeit.model.printphoto.PrintPhotoManager;
 import org.wahlzeit.services.LogBuilder;
 
 import javax.servlet.http.HttpServletRequest;
