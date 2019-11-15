@@ -2,7 +2,7 @@ package org.wahlzeit.model.coordinate;
 
 import java.util.Objects;
 
-public class SphericCoordinate implements Coordinate {
+public class SphericCoordinate extends AbstractCoordinate {
     private final double phi;
     private final double theta;
     private final double radius;
@@ -65,9 +65,8 @@ public class SphericCoordinate implements Coordinate {
         double subformula = Math.pow(Math.sin(dPhi / 2), 2) +
                 Math.cos(this.getPhi()) * Math.cos(sOther.getPhi()) *
                         Math.pow(Math.sin(dTheta / 2), 2);
-        double angle = 2 * Math.asin(Math.sqrt(subformula));
 
-        return angle;
+        return 2 * Math.asin(Math.sqrt(subformula));
     }
 
     /**

@@ -2,10 +2,10 @@ package org.wahlzeit.model.coordinate;
 
 import java.util.Objects;
 
-public class CartesianCoordinate implements Coordinate {
-    private double x;
-    private double y;
-    private double z;
+public class CartesianCoordinate extends AbstractCoordinate {
+    private final double x;
+    private final double y;
+    private final double z;
 
     public CartesianCoordinate(double x, double y, double z) {
         this.x = x;
@@ -98,8 +98,4 @@ public class CartesianCoordinate implements Coordinate {
         return Objects.hash(x, y, z);
     }
 
-    private boolean similar(double d1, double d2) {
-        double d = d1 / d2;
-        return (Math.abs(d - 1.0) < 0.001);
-    }
 }
