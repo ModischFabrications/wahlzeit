@@ -1,5 +1,7 @@
-package org.wahlzeit.model;
+package org.wahlzeit.model.printphoto;
 
+import org.wahlzeit.model.PhotoFactory;
+import org.wahlzeit.model.PhotoId;
 import org.wahlzeit.services.LogBuilder;
 
 import java.util.logging.Logger;

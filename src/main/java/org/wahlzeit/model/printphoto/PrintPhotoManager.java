@@ -1,6 +1,9 @@
-package org.wahlzeit.model;
+package org.wahlzeit.model.printphoto;
 
 import com.google.appengine.api.images.Image;
+import org.wahlzeit.model.PhotoFilter;
+import org.wahlzeit.model.PhotoId;
+import org.wahlzeit.model.PhotoManager;
 
 import java.io.IOException;
 
