@@ -16,7 +16,7 @@ public class SphericCoordinateTest {
         SphericCoordinate coordinate1 = new SphericCoordinate(1, 2, 3);
         SphericCoordinate coordinate2 = new SphericCoordinate(1, 2, 5);
 
-        assertEquals(0, coordinate1.getCentralAngle(coordinate2), 0.01);
+        assertEquals(0, coordinate1.doGetAngle(coordinate2), 0.001);
     }
 
     @Test
@@ -25,7 +25,7 @@ public class SphericCoordinateTest {
         SphericCoordinate coordinate2 = new SphericCoordinate(1, 3, 3);
 
         // I hope that's expected, can't really check it against something else...
-        assertEquals(0.524, coordinate1.getCentralAngle(coordinate2), 0.001);
+        assertEquals(0.524, coordinate1.doGetAngle(coordinate2), 0.001);
     }
 
     @Test
