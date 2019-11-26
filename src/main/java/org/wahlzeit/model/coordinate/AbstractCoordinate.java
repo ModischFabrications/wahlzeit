@@ -9,17 +9,29 @@ public abstract class AbstractCoordinate implements Coordinate {
 
     @Override
     public CartesianCoordinate asCartesianCoordinate() {
-        return this.asSphericCoordinate().doAsCartesianCoordinate();
+        CartesianCoordinate cartesianCoordinate = this.asSphericCoordinate().doAsCartesianCoordinate();
+
+        // postcondition
+        cartesianCoordinate.assertClassInvariants();
+        return cartesianCoordinate;
     }
 
     @Override
     public SphericCoordinate asSphericCoordinate() {
-        return this.asCartesianCoordinate().doAsSphericCoordinate();
+        SphericCoordinate sphericCoordinate = this.asCartesianCoordinate().doAsSphericCoordinate();
+
+        // postcondition
+        sphericCoordinate.assertClassInvariants();
+        return sphericCoordinate;
     }
 
     @Override
     public double getCartesianDistance(Coordinate other) {
-        return this.asCartesianCoordinate().doGetDistance(other.asCartesianCoordinate());
+        double d = this.asCartesianCoordinate().doGetDistance(other.asCartesianCoordinate());
+
+        // postcondition
+        assert !Double.isNaN(d);
+        return d;
     }
 
     /**
@@ -58,4 +70,6 @@ public abstract class AbstractCoordinate implements Coordinate {
     protected boolean isSimilar(Coordinate other) {
         return this.asCartesianCoordinate().isSimilar(other.asCartesianCoordinate());
     }
+
+    abstract protected void assertClassInvariants();
 }

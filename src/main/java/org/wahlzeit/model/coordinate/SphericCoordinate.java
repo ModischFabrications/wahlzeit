@@ -14,23 +14,30 @@ public class SphericCoordinate extends AbstractCoordinate {
         this.phi = phi;
         this.theta = theta;
         this.radius = radius;
+
+        assertClassInvariants();
     }
 
     @Override
     public SphericCoordinate asSphericCoordinate() {
+        assertClassInvariants();
         return this;
     }
 
     public CartesianCoordinate doAsCartesianCoordinate() {
         // seems to be this conversion. Be aware that it has a different notation!
         // p -> radius
-        // https://en.wikipedia.org/wiki/List_of_common_coordinate_transformation
+        // https://en.wikipedia.org/wiki/List_of_common_coordinate_transformations
 
         double x = radius * Math.sin(theta) * Math.cos(phi);
         double y = radius * Math.sin(theta) * Math.sin(phi);
         double z = radius * Math.cos(theta);
 
-        return new CartesianCoordinate(x, y, z);
+        CartesianCoordinate cartesianCoordinate = new CartesianCoordinate(x, y, z);
+
+        // postcondition
+        cartesianCoordinate.assertClassInvariants();
+        return cartesianCoordinate;
     }
 
     double doGetAngle(SphericCoordinate sOther) {
@@ -44,7 +51,11 @@ public class SphericCoordinate extends AbstractCoordinate {
                 Math.cos(this.getPhi()) * Math.cos(sOther.getPhi()) *
                         Math.pow(Math.sin(dTheta / 2), 2);
 
-        return 2 * Math.asin(Math.sqrt(subformula));
+        double angle = 2 * Math.asin(Math.sqrt(subformula));
+
+        // postcondition
+        assert !Double.isNaN(angle);
+        return angle;
     }
 
     @Override
@@ -62,5 +73,17 @@ public class SphericCoordinate extends AbstractCoordinate {
 
     public double getRadius() {
         return radius;
+    }
+
+    @Override
+    protected void assertClassInvariants() {
+        assert !Double.isNaN(this.phi);
+        assert !Double.isNaN(this.theta);
+        assert !Double.isNaN(this.radius);
+
+        // TODO: ask a mathematician what the value range actually is
+        assert this.phi > 0 && this.phi < 360;
+        assert this.theta > 0 && this.theta < 360;
+        assert this.phi > 0 && this.phi < 360;
     }
 }
