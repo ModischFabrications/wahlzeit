@@ -39,6 +39,9 @@ public class CartesianCoordinate extends AbstractCoordinate {
      * direct cartesian distance
      */
     public double doGetDistance(CartesianCoordinate other) {
+        //precondition
+        other.assertClassInvariants();
+
         double distance = Math.sqrt(
                 Math.pow(this.x - other.getX(), 2) +
                         Math.pow(this.y - other.getY(), 2) +

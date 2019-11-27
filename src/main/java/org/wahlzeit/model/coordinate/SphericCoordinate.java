@@ -41,6 +41,9 @@ public class SphericCoordinate extends AbstractCoordinate {
     }
 
     double doGetAngle(SphericCoordinate sOther) {
+        //precondition
+        sOther.assertClassInvariants();
+
         // https://en.wikipedia.org/wiki/Great-circle_distance
         // notation: theta -> lambda
         // It sounds crazy but the radius does not matter!
