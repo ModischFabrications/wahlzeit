@@ -20,6 +20,9 @@ public class PrintPhoto extends Photo {
      */
     public PrintPhoto(Material printMaterial) {
         super();
+        // precondition
+        if (printMaterial == null) throw new IllegalArgumentException("Material not defined");
+
         this.printMaterial = printMaterial;
     }
 
@@ -28,6 +31,9 @@ public class PrintPhoto extends Photo {
      */
     public PrintPhoto(PhotoId myId, Material printMaterial) {
         super(myId);
+        // precondition
+        if (printMaterial == null) throw new IllegalArgumentException("Material not defined");
+
         this.printMaterial = printMaterial;
     }
 

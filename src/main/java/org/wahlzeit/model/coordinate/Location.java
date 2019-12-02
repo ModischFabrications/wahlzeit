@@ -4,6 +4,8 @@ public class Location {
     public Coordinate coordinate;
 
     public Location(Coordinate coordinate) {
+        if (coordinate == null) throw new IllegalArgumentException("Coordinate not defined");
+
         this.coordinate = coordinate;
     }
 
