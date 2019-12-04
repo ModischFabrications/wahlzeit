@@ -18,7 +18,7 @@ public class PrintPhoto extends Photo {
     /**
      *
      */
-    public PrintPhoto(Material printMaterial) {
+    public PrintPhoto(Material printMaterial) throws IllegalArgumentException {
         super();
         // precondition
         if (printMaterial == null) throw new IllegalArgumentException("Material not defined");
@@ -29,7 +29,7 @@ public class PrintPhoto extends Photo {
     /**
      * @methodtype constructor
      */
-    public PrintPhoto(PhotoId myId, Material printMaterial) {
+    public PrintPhoto(PhotoId myId, Material printMaterial) throws IllegalArgumentException {
         super(myId);
         // precondition
         if (printMaterial == null) throw new IllegalArgumentException("Material not defined");
