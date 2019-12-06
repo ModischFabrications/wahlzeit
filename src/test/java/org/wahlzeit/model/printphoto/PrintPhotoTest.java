@@ -37,4 +37,10 @@ public class PrintPhotoTest {
         assertNotEquals(photo, photo2);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testNullParameter() {
+        PrintPhoto photo = new PrintPhoto(null);
+
+    }
+
 }
