@@ -1,5 +1,8 @@
 package org.wahlzeit.model.coordinate;
 
+/**
+ * value type, copy-on-write and final attributes
+ */
 public abstract class AbstractCoordinate implements Coordinate {
 
     static boolean similar(double d1, double d2) {
