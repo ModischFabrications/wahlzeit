@@ -5,6 +5,8 @@ import java.util.Map;
 import java.util.Objects;
 
 public class CartesianCoordinate extends AbstractCoordinate {
+    // cant be pulled to abstract as it's static and we don't want to share the map
+    // due to implicit overlaps with the equals() method
     private static Map<CartesianCoordinate, CartesianCoordinate> instances = new HashMap<>();
 
     private final double x;
@@ -47,7 +49,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
         // Math.atan2(y/x); ?
         double theta = Math.acos(z / r);
 
-        SphericCoordinate sphericCoordinate = new SphericCoordinate(phi, theta, r);
+        SphericCoordinate sphericCoordinate = SphericCoordinate.create(phi, theta, r);
 
         // postcondition
         sphericCoordinate.assertClassInvariants();

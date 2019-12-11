@@ -1,8 +1,12 @@
 package org.wahlzeit.model.coordinate;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class SphericCoordinate extends AbstractCoordinate {
+    private static Map<SphericCoordinate, SphericCoordinate> instances = new HashMap<>();
+
     private final double phi;
     private final double theta;
     private final double radius;
@@ -10,12 +14,27 @@ public class SphericCoordinate extends AbstractCoordinate {
     /**
      * everything in radians!
      */
-    public SphericCoordinate(double phi, double theta, double radius) {
+    private SphericCoordinate(double phi, double theta, double radius) {
         this.phi = phi;
         this.theta = theta;
         this.radius = radius;
 
         assertClassInvariants();
+    }
+
+    public static SphericCoordinate create(double phi, double theta, double radius) {
+        SphericCoordinate coordinate = new SphericCoordinate(phi, theta, radius);
+
+        coordinate = makeShared(coordinate);
+
+        return coordinate;
+    }
+
+    private static SphericCoordinate makeShared(SphericCoordinate coordinate) {
+        // won't account for floating point errors
+        if (!instances.containsKey(coordinate))
+            instances.put(coordinate, coordinate);
+        return instances.get(coordinate);
     }
 
     @Override

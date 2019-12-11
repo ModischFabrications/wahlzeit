@@ -18,8 +18,8 @@ public class CoordinateTest {
 
     @Test
     public void testDistanceWithConversion() {
-        Coordinate coordinate1 = new SphericCoordinate(1, 2, 3);
-        Coordinate coordinate2 = new SphericCoordinate(1, 2, 5);
+        Coordinate coordinate1 = SphericCoordinate.create(1, 2, 3);
+        Coordinate coordinate2 = SphericCoordinate.create(1, 2, 5);
 
         assertEquals(2, coordinate1.getCartesianDistance(coordinate2), 0.001);
     }
