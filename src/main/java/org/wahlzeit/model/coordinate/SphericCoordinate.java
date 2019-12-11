@@ -33,7 +33,7 @@ public class SphericCoordinate extends AbstractCoordinate {
         double y = radius * Math.sin(theta) * Math.sin(phi);
         double z = radius * Math.cos(theta);
 
-        CartesianCoordinate cartesianCoordinate = new CartesianCoordinate(x, y, z);
+        CartesianCoordinate cartesianCoordinate = CartesianCoordinate.create(x, y, z);
 
         // postcondition
         cartesianCoordinate.assertClassInvariants();

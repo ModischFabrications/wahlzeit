@@ -1,18 +1,37 @@
 package org.wahlzeit.model.coordinate;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class CartesianCoordinate extends AbstractCoordinate {
+    private static Map<CartesianCoordinate, CartesianCoordinate> instances = new HashMap<>();
+
     private final double x;
     private final double y;
     private final double z;
 
-    public CartesianCoordinate(double x, double y, double z) {
+    private CartesianCoordinate(double x, double y, double z) {
         this.x = x;
         this.y = y;
         this.z = z;
 
         assertClassInvariants();
+    }
+
+    public static CartesianCoordinate create(double x, double y, double z) {
+        CartesianCoordinate coordinate = new CartesianCoordinate(x, y, z);
+
+        coordinate = makeShared(coordinate);
+
+        return coordinate;
+    }
+
+    private static CartesianCoordinate makeShared(CartesianCoordinate coordinate) {
+        // won't account for floating point errors
+        if (!instances.containsKey(coordinate))
+            instances.put(coordinate, coordinate);
+        return instances.get(coordinate);
     }
 
     @Override

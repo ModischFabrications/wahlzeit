@@ -8,7 +8,7 @@ public class CoordinateTest {
 
     @Test
     public void testRoundTrip() {
-        Coordinate baseCoordinate = new CartesianCoordinate(1, 2, 3);
+        Coordinate baseCoordinate = CartesianCoordinate.create(1, 2, 3);
 
         Coordinate sphericCoordinate = baseCoordinate.asSphericCoordinate();
         Coordinate assumedBaseCoordinate = sphericCoordinate.asCartesianCoordinate();
@@ -26,8 +26,8 @@ public class CoordinateTest {
 
     @Test
     public void testAngleWithConversion() {
-        Coordinate coordinate1 = new CartesianCoordinate(1, 2, 3);
-        Coordinate coordinate2 = new CartesianCoordinate(1, 2, 5);
+        Coordinate coordinate1 = CartesianCoordinate.create(1, 2, 3);
+        Coordinate coordinate2 = CartesianCoordinate.create(1, 2, 5);
 
         assertEquals(0.09822, coordinate1.getCentralAngle(coordinate2), 0.001);
     }
