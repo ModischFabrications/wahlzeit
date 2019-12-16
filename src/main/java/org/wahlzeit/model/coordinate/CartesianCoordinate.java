@@ -5,9 +5,8 @@ import java.util.Map;
 import java.util.Objects;
 
 public class CartesianCoordinate extends AbstractCoordinate {
-    // cant be pulled to abstract as it's static and we don't want to share the map
-    // due to implicit overlaps with the equals() method
-    private static Map<CartesianCoordinate, CartesianCoordinate> instances = new HashMap<>();
+    // // primitive not hashable
+    private static Map<Integer, CartesianCoordinate> instances = new HashMap<>();
 
     private final double x;
     private final double y;
@@ -21,7 +20,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
         assertClassInvariants();
     }
 
-    public static CartesianCoordinate create(double x, double y, double z) {
+    public synchronized static CartesianCoordinate create(double x, double y, double z) {
         CartesianCoordinate coordinate = new CartesianCoordinate(x, y, z);
 
         coordinate = makeShared(coordinate);
@@ -29,11 +28,12 @@ public class CartesianCoordinate extends AbstractCoordinate {
         return coordinate;
     }
 
-    private static CartesianCoordinate makeShared(CartesianCoordinate coordinate) {
+    private synchronized static CartesianCoordinate makeShared(CartesianCoordinate coordinate) {
         // won't account for floating point errors
-        if (!instances.containsKey(coordinate))
-            instances.put(coordinate, coordinate);
-        return instances.get(coordinate);
+        int key = coordinate.hashCode();
+        if (!instances.containsKey(key))
+            instances.put(key, coordinate);
+        return instances.get(key);
     }
 
     @Override

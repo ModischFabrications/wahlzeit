@@ -5,7 +5,8 @@ import java.util.Map;
 import java.util.Objects;
 
 public class SphericCoordinate extends AbstractCoordinate {
-    private static Map<SphericCoordinate, SphericCoordinate> instances = new HashMap<>();
+    // primitive not hashable
+    private static Map<Integer, SphericCoordinate> instances = new HashMap<>();
 
     private final double phi;
     private final double theta;
@@ -22,7 +23,7 @@ public class SphericCoordinate extends AbstractCoordinate {
         assertClassInvariants();
     }
 
-    public static SphericCoordinate create(double phi, double theta, double radius) {
+    public synchronized static SphericCoordinate create(double phi, double theta, double radius) {
         SphericCoordinate coordinate = new SphericCoordinate(phi, theta, radius);
 
         coordinate = makeShared(coordinate);
@@ -30,11 +31,12 @@ public class SphericCoordinate extends AbstractCoordinate {
         return coordinate;
     }
 
-    private static SphericCoordinate makeShared(SphericCoordinate coordinate) {
+    private synchronized static SphericCoordinate makeShared(SphericCoordinate coordinate) {
         // won't account for floating point errors
-        if (!instances.containsKey(coordinate))
-            instances.put(coordinate, coordinate);
-        return instances.get(coordinate);
+        int key = coordinate.hashCode();
+        if (!instances.containsKey(key))
+            instances.put(key, coordinate);
+        return instances.get(key);
     }
 
     @Override
