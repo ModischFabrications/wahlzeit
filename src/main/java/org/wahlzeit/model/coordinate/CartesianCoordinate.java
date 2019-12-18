@@ -1,9 +1,15 @@
 package org.wahlzeit.model.coordinate;
 
+import org.wahlzeit.utils.PatternInstance;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+@PatternInstance(
+        patternName = "Flyweight",
+        participants = {"CartesianCoordinate"}
+)
 public class CartesianCoordinate extends AbstractCoordinate {
     // // primitive not hashable
     private static Map<Integer, CartesianCoordinate> instances = new HashMap<>();
