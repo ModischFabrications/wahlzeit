@@ -11,13 +11,28 @@ public class PrintTypeTest {
     }
 
     @Test
-    public void addSubType() {
-        PrintType type = new PrintType(manager);
-        PrintType subtype = new PrintType(manager);
+    public void isSubtypeOf() {
+        PrintType supertype = new PrintType(manager);
+        PrintType subtype = new PrintType(manager, supertype);
+
+        assert subtype.isSubtypeOf(supertype);
     }
 
     @Test
-    public void isSubtypeOf() {
+    public void nestedIsSubtypeOf() {
+        PrintType supertype = new PrintType(manager);
+        PrintType subtype = new PrintType(manager, supertype);
+        PrintType subsubtype = new PrintType(manager, subtype);
 
+        assert subsubtype.isSubtypeOf(supertype);
     }
+
+    @Test
+    public void notIsSubtypeOf() {
+        PrintType type1 = new PrintType(manager);
+        PrintType type2 = new PrintType(manager);
+
+        assert !type2.isSubtypeOf(type1);
+    }
+
 }

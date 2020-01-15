@@ -4,21 +4,37 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class PrintType {
+    // could be implemented as value types if you have free time on your hands
+    // and need something to do.
+    // Value type is cleaner, but "singletoning" in manager is good enough for now
+
+    // no idea why we need that but it's required
     private PrintManager manager;
 
     private PrintType superType;
 
-    // useless?
+    // useless, could be removed if noone ever needs it
     private Set<PrintType> subTypes = new HashSet<>();
 
     public PrintType(PrintManager manager) {
+        assert manager != null;
         this.manager = manager;
     }
 
-    public void addSubType(PrintType subType) {
+    /**
+     * subtype constructor
+     */
+    public PrintType(PrintManager manager, PrintType superType) {
+        assert manager != null;
+        assert superType != null;
+        this.manager = manager;
+        this.superType = superType;
+        superType.addSubType(this);
+    }
+
+    void addSubType(PrintType subType) {
         assert subType != null;
 
-        subType.setSuperType(this);
         subTypes.add(subType);
     }
 
@@ -35,21 +51,17 @@ public class PrintType {
         // recursive!
         return this.superType.isSubtypeOf(type);
 
-        // the example of the lecture seems to mean something else...
-        //if (type == this) return true;
-
-/*        for (PrintType subtype : subTypes) {
-            if (subtype.isSubtypeOf(type)) return true;
-        }*/
+        // the example of the lecture seems to mean something else, don't copy it
     }
 
     public PrintType getSuperType() {
         return superType;
     }
 
-    public void setSuperType(PrintType superType) {
+    // immutability is better
+    /*public void setSuperType(PrintType superType) {
         this.superType = superType;
-    }
+    }*/
 
     public PrintType[] getSubTypes() {
         // because it's read-only!
