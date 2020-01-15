@@ -5,17 +5,16 @@ public class Print {
     private PrintType type;
     private PrintManager manager;
 
-    // TODO: add manager -> make self-assigning factory?
-
-    // TODO: add to PrintPhoto
-
-    // TODO:
-
-    Print(PrintType type) {
+    Print(PrintType type, PrintManager manager) {
         this.type = type;
+        this.manager = manager;
     }
 
     public PrintType getType() {
         return type;
+    }
+
+    public PrintManager getManager() {
+        return manager;
     }
 }

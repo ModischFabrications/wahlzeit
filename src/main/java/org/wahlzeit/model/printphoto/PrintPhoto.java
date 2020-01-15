@@ -13,9 +13,13 @@ public class PrintPhoto extends Photo {
         ABS,
         TPU
     }
+
     private Material printMaterial = Material.UNKNOWN;
 
+    // TODO: implement left side of the class diagram? Not really useful, as we already have a factory
+
     private Print print = null;
+
     /**
      *
      */

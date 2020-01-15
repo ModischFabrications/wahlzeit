@@ -22,8 +22,9 @@ public class PrintManager {
 
     public Print createPrint(String typeName) {
         assertIsValidPrintTypeName(typeName);
-        PrintType type = types.getOrDefault(typeName, new PrintType());
-        Print result = type.createInstance();
+
+        PrintType type = types.getOrDefault(typeName, new PrintType(this));
+        Print result = new Print(type, this);
         types.put(typeName, type);
 
         return result;

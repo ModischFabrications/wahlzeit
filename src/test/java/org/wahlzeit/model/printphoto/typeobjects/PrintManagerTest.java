@@ -17,4 +17,10 @@ public class PrintManagerTest {
         PrintManager manager = PrintManager.getInstance();
         Print print = manager.createPrint("SLA");
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void failCreatePrint() {
+        PrintManager manager = PrintManager.getInstance();
+        Print print = manager.createPrint("Bobby");
+    }
 }

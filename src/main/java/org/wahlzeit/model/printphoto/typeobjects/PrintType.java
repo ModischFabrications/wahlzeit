@@ -4,13 +4,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class PrintType {
+    private PrintManager manager;
+
     private PrintType superType;
 
     // useless?
     private Set<PrintType> subTypes = new HashSet<>();
 
-    public Print createInstance() {
-        return new Print(this);
+    public PrintType(PrintManager manager) {
+        this.manager = manager;
     }
 
     public void addSubType(PrintType subType) {
