@@ -8,6 +8,7 @@ import org.wahlzeit.model.*;
 import org.wahlzeit.model.coordinate.LocationTestSuite;
 import org.wahlzeit.model.persistence.DatastoreAdapterTest;
 import org.wahlzeit.model.printphoto.PrintPhotoTestSuite;
+import org.wahlzeit.model.printphoto.typeobjects.PrintTypeTestSuite;
 import org.wahlzeit.services.EmailTestSuite;
 import org.wahlzeit.services.LogBuilderTest;
 import org.wahlzeit.utils.StringUtilTest;
@@ -18,6 +19,7 @@ import org.wahlzeit.utils.VersionTest;
 @Suite.SuiteClasses({
         EmailTestSuite.class,
         PrintPhotoTestSuite.class,
+        PrintTypeTestSuite.class,
         LocationTestSuite.class,
 
         // TODO: move these individual tests into sub-suites
