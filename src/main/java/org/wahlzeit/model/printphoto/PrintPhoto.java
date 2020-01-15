@@ -2,6 +2,7 @@ package org.wahlzeit.model.printphoto;
 
 import org.wahlzeit.model.Photo;
 import org.wahlzeit.model.PhotoId;
+import org.wahlzeit.model.printphoto.typeobjects.Print;
 
 public class PrintPhoto extends Photo {
     // TODO: should be added to the UI
@@ -12,9 +13,9 @@ public class PrintPhoto extends Photo {
         ABS,
         TPU
     }
-
     private Material printMaterial = Material.UNKNOWN;
 
+    private Print print = null;
     /**
      *
      */
@@ -42,6 +43,14 @@ public class PrintPhoto extends Photo {
      */
     public Material getPrintMaterial() {
         return this.printMaterial;
+    }
+
+    public Print getPrint() {
+        return print;
+    }
+
+    public void setPrint(Print print) {
+        this.print = print;
     }
 
 
